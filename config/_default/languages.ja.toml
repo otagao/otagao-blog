@@ -1,0 +1,21 @@
+languageCode = "ja"
+languageName = "Japanese"
+weight = 1
+title = "otagao blog"
+
+[params]
+displayName = "日本語"
+isoCode = "ja"
+rtl = false
+dateFormat = "2006-01-02"
+
+[params.author]
+name = "otagao"
+image = "icon.png"
+headline = "どこにでもいるオタク"
+links = [
+ { mastodon = "https://fish.otagao.net/@otagao" },
+ { bluesky = "https://bsky.app/profile/otagao.net" },
+ { youtube = "https://www.youtube.com/@otagao" },
+]
+bio = "どこにでもいるオタク"
