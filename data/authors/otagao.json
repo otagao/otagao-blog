@@ -1,0 +1,10 @@
+{
+    "name": "otagao",
+    "image": "icon.png",
+    "bio": "どこにでもいるオタク",
+    "social": [
+        { "mastodon": "https://fish.otagao.net/@otagao" },
+        { "bluesky": "https://bsky.app/profile/otagao.net" },
+        { "youtube": "https://www.youtube.com/@otagao" }
+    ]
+}
