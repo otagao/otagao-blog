@@ -5,6 +5,7 @@
     "social": [
         { "mastodon": "https://fish.otagao.net/@otagao" },
         { "bluesky": "https://bsky.app/profile/otagao.net" },
+        { "github": "https://github.com/otagao" },
         { "youtube": "https://www.youtube.com/@otagao" }
     ]
 }

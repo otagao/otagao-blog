@@ -16,6 +16,7 @@ headline = "どこにでもいるオタク"
 links = [
  { mastodon = "https://fish.otagao.net/@otagao" },
  { bluesky = "https://bsky.app/profile/otagao.net" },
- { youtube = "https://www.youtube.com/@otagao" },
+ { github = "https://github.com/otagao" },
+ { youtube = "https://www.youtube.com/@otagao" }
 ]
 bio = "どこにでもいるオタク"
