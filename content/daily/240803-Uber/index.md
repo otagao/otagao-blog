@@ -1,5 +1,5 @@
 ---
-title: "240803-Uberでメイクマネー大作戦"
+title: "Uberでメイクマネー大作戦(24/08/03)"
 date: 2024-08-03
 draft: false
 summary: "Uber Eatsに初挑戦"

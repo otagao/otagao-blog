@@ -1,5 +1,5 @@
 ---
-title: "240801-helloworld"
+title: "helloworld(24/08/01)"
 date: 2024-08-01
 draft: false
 summary: "ブログを作りました"

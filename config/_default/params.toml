@@ -13,6 +13,7 @@ fathomAnalytics = { }
 umamiAnalytics = { }
 buymeacoffee = { }
 verification = { }
+mainSections = ["posts"]
 
 [header]
 layout = "fixed-fill"
@@ -27,10 +28,10 @@ showScrollToTop = true
 [homepage]
 layout = "background"
 showRecent = true
-showRecentItems = "5"
-showMoreLink = false
+showRecentItems = "6"
+showMoreLink = true
 showMoreLinkDest = "/posts"
-cardView = false
+cardView = true
 cardViewScreenWidth = false
 layoutBackgroundBlur = true
 homepageImage = "homepageimage.jpg"
