@@ -2,7 +2,7 @@
 title: "日報(25/11/14)"
 date: 2025-11-14
 draft: false
-summary: "日報"
+summary: "日報。Uberの話とかHugoの話とか"
 categories: ["日記"]
 tags: ["労働/Uber Eats","hugo","GitHub"]
 ---

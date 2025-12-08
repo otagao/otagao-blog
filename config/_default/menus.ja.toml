@@ -8,5 +8,10 @@ name = "日報"
 pageRef = "daily"
 weight = 15
 
+[[main]]
+name = "about"
+pageRef = "about"
+weight = 20
+
 [[footer]]
 none = "none"

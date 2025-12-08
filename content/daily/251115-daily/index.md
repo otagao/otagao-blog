@@ -2,7 +2,7 @@
 title: "日報(25/11/15)"
 date: 2025-11-15
 draft: false
-summary: "日報"
+summary: "日報。生活習慣崩壊"
 categories: ["日記"]
 tags: []
 ---

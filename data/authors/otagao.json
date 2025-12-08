@@ -3,6 +3,7 @@
     "image": "icon.png",
     "bio": "どこにでもいるオタク",
     "social": [
+        { "x-twitter": "https://x.com/otagao_otg/" },
         { "mastodon": "https://fish.otagao.net/@otagao" },
         { "bluesky": "https://bsky.app/profile/otagao.net" },
         { "github": "https://github.com/otagao" },
