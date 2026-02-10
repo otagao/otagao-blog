@@ -4,7 +4,7 @@ date: 2025-11-14
 draft: false
 summary: "日報。Uberの話とかHugoの話とか"
 categories: ["日記"]
-tags: ["労働/Uber Eats","hugo","GitHub"]
+tags: ["労働/フードデリバリー","hugo","GitHub"]
 ---
 
 ## 日常生活

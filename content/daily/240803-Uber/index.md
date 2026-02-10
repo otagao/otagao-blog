@@ -4,7 +4,7 @@ date: 2024-08-03
 draft: false
 summary: "Uber Eatsに初挑戦"
 categories: ["日記"]
-tags: ["労働/Uber Eats", "hugo"]
+tags: ["労働/フードデリバリー", "hugo"]
 ---
 
 ## Uber試験稼働

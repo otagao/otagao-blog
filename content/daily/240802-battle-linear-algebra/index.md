@@ -4,7 +4,7 @@ date: 2024-08-02
 draft: false
 summary: "期末試験との戦い、など"
 categories: ["日記"]
-tags: ["大学生活", "食事/DKMeals", "hugo", "obsidian"]
+tags: ["大学", "食事/DKMeals", "hugo", "obsidian"]
 ---
 
 ## 俺 VS 線形代数A

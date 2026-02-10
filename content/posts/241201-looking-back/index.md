@@ -4,7 +4,7 @@ date: 2024-12-01
 draft: false
 summary: "アドカレ記事。大学に入ってから今までを振り返る"
 categories: ["雑記"]
-tags: ["アドカレ"]
+tags: ["大学", "アドカレ"]
 ---
 
 この記事は、[klis Advent Calendar 2024](https://adventar.org/calendars/10419)の1日目の記事です。
