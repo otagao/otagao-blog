@@ -3,7 +3,7 @@ title: "筑波大学に合格してから8ヶ月ちょいを振り返る"
 date: 2024-12-01
 draft: false
 summary: "アドカレ記事。大学に入ってから今までを振り返る"
-categories: ["日記"]
+categories: ["雑記"]
 tags: ["アドカレ"]
 ---
 
