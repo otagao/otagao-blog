@@ -1,0 +1,76 @@
+{{- $page := . -}}
+{{- $params := site.Params.ogp | default dict -}}
+{{- $bg := "" -}}
+{{- $pageImages := $page.Resources.ByType "image" -}}
+{{- range slice "*featured*" "*cover*" "*thumbnail*" -}}
+  {{- if not $bg -}}
+    {{- $bg = $pageImages.GetMatch . -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $bg -}}
+  {{- $bgPath := $params.backgroundImage | default site.Params.homepage.homepageImage | default "homepageimage.jpg" -}}
+  {{- $bg = resources.Get $bgPath -}}
+{{- end -}}
+
+{{- $font := "" -}}
+{{- with $params.font -}}
+  {{- $font = resources.Get . -}}
+{{- end -}}
+{{- if and (not $font) $params.fontURL -}}
+  {{- with try (resources.GetRemote $params.fontURL) -}}
+    {{- with .Err -}}
+      {{- errorf "Unable to fetch OGP font %q: %s" $params.fontURL . -}}
+    {{- else with .Value -}}
+      {{- $font = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $image := "" -}}
+{{- with $bg -}}
+  {{- $image = .Fill "1200x630 Center jpg q88" -}}
+  {{- $image = $image | images.Filter (images.Brightness -34) (images.Contrast 8) -}}
+
+  {{- $title := $page.Title | plainify | strings.Truncate 78 "..." -}}
+  {{- $runes := strings.RuneCount $title -}}
+  {{- $fontSize := cond (gt $runes 58) 44 (cond (gt $runes 36) 52 62) -}}
+  {{- $lineLength := cond (gt $runes 58) 18 (cond (gt $runes 36) 16 15) -}}
+  {{- $title = replaceRE (printf "(.{1,%d})" $lineLength) "${1}\n" $title | strings.TrimSpace -}}
+
+  {{- $titleOpts := dict
+    "x" 86
+    "y" 92
+    "size" $fontSize
+    "linespacing" 14
+    "color" "#f8fafc"
+  -}}
+  {{- with $font -}}
+    {{- $titleOpts = merge $titleOpts (dict "font" .) -}}
+  {{- end -}}
+  {{- $image = $image | images.Filter (images.Text $title $titleOpts) -}}
+
+  {{- $meta := site.Title -}}
+  {{- if and (not $page.IsHome) (not $page.Date.IsZero) -}}
+    {{- $meta = printf "%s  /  %s" site.Title ($page.Date.Format "2006-01-02") -}}
+  {{- end -}}
+  {{- $metaOpts := dict
+    "x" 86
+    "y" 510
+    "size" 30
+    "linespacing" 8
+    "color" "#dbeafe"
+  -}}
+  {{- with $font -}}
+    {{- $metaOpts = merge $metaOpts (dict "font" .) -}}
+  {{- end -}}
+  {{- $image = $image | images.Filter (images.Text $meta $metaOpts) -}}
+
+  {{- with resources.Get "icon.png" -}}
+    {{- $logo := .Fill "76x76 Center png" -}}
+    {{- $image = $image | images.Filter (images.Overlay $logo 1034 478) -}}
+  {{- end -}}
+
+  {{- $target := printf "%sog.jpg" (strings.TrimPrefix "/" $page.RelPermalink) -}}
+  {{- $image = resources.Copy $target $image -}}
+{{- end -}}
+
+{{- return $image -}}
