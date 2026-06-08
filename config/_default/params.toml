@@ -21,6 +21,7 @@ backgroundImage = "homepageimage.jpg"
 # BIZ UDPGothic is licensed under the SIL Open Font License 1.1.
 # https://github.com/googlefonts/morisawa-biz-ud-gothic
 fontURL = "https://raw.githubusercontent.com/googlefonts/morisawa-biz-ud-gothic/main/fonts/ttf/BIZUDPGothic-Bold.ttf"
+budouxModelURL = "https://raw.githubusercontent.com/google/budoux/v0.8.4/budoux/models/ja.json"
 
 [header]
 layout = "fixed-fill"

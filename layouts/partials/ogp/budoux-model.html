@@ -1,0 +1,18 @@
+{{- $url := site.Params.ogp.budouxModelURL -}}
+{{- $model := dict -}}
+{{- with try (resources.GetRemote $url) -}}
+  {{- with .Err -}}
+    {{- errorf "Unable to fetch BudouX model %q: %s" $url . -}}
+  {{- else with .Value -}}
+    {{- $model = . | transform.Unmarshal -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $baseScore := 0.0 -}}
+{{- range $group := $model -}}
+  {{- range $score := $group -}}
+    {{- $baseScore = add $baseScore $score -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (dict "model" $model "baseScore" (mul -0.5 $baseScore)) -}}

@@ -1,0 +1,70 @@
+{{- $text := .text -}}
+{{- $maxLineLength := .maxLineLength -}}
+{{- $modelData := .modelData -}}
+{{- $chunks := partial "ogp/budoux-parse.html" (dict "text" $text "modelData" $modelData) -}}
+{{- $segments := slice -}}
+{{- $skipNext := false -}}
+{{- range $i := seq 0 (sub (len $chunks) 1) -}}
+  {{- if $skipNext -}}
+    {{- $skipNext = false -}}
+    {{- continue -}}
+  {{- end -}}
+  {{- $chunk := index $chunks $i -}}
+  {{- if and (le (strings.RuneCount $chunk) 3) (lt (add $i 1) (len $chunks)) -}}
+    {{- $segments = $segments | append (printf "%s%s" $chunk (index $chunks (add $i 1))) -}}
+    {{- $skipNext = true -}}
+  {{- else -}}
+    {{- $segments = $segments | append $chunk -}}
+  {{- end -}}
+{{- end -}}
+{{- $lines := slice -}}
+{{- $line := "" -}}
+{{- $lineLength := 0 -}}
+
+{{- range $chunk := $segments -}}
+  {{- $chunkLength := strings.RuneCount $chunk -}}
+  {{- if gt $chunkLength $maxLineLength -}}
+    {{- with $line -}}
+      {{- $lines = $lines | append . -}}
+      {{- $line = "" -}}
+      {{- $lineLength = 0 -}}
+    {{- end -}}
+    {{- range $part := split (replaceRE (printf "(.{1,%d})" $maxLineLength) "${1}\n" $chunk | strings.TrimSpace) "\n" -}}
+      {{- with . -}}
+        {{- $lines = $lines | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else if and $line (gt (add $lineLength $chunkLength) $maxLineLength) -}}
+    {{- $lines = $lines | append $line -}}
+    {{- $line = $chunk -}}
+    {{- $lineLength = $chunkLength -}}
+  {{- else -}}
+    {{- $line = printf "%s%s" $line $chunk -}}
+    {{- $lineLength = add $lineLength $chunkLength -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with $line -}}
+  {{- $lines = $lines | append . -}}
+{{- end -}}
+
+{{- $adjustedLines := slice -}}
+{{- $carry := "" -}}
+{{- $lineEndParticles := slice "と" "に" "は" "が" "を" "で" "へ" "や" "も" -}}
+{{- range $i, $currentLine := $lines -}}
+  {{- $currentLine = printf "%s%s" $carry $currentLine -}}
+  {{- $carry = "" -}}
+  {{- if and (lt (add $i 1) (len $lines)) (gt (strings.RuneCount $currentLine) 1) -}}
+    {{- $lastChar := substr $currentLine (sub (strings.RuneCount $currentLine) 1) 1 -}}
+    {{- if in $lineEndParticles $lastChar -}}
+      {{- $currentLine = substr $currentLine 0 (sub (strings.RuneCount $currentLine) 1) -}}
+      {{- $carry = $lastChar -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $currentLine -}}
+    {{- $adjustedLines = $adjustedLines | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $lines = $adjustedLines -}}
+
+{{- return (delimit $lines "\n") -}}

@@ -31,10 +31,11 @@
   {{- $image = $image | images.Filter (images.Brightness -34) (images.Contrast 8) -}}
 
   {{- $title := $page.Title | plainify | strings.Truncate 78 "..." -}}
+  {{- $modelData := partialCached "ogp/budoux-model.html" "ja" -}}
   {{- $runes := strings.RuneCount $title -}}
   {{- $fontSize := cond (gt $runes 58) 44 (cond (gt $runes 36) 52 62) -}}
-  {{- $lineLength := cond (gt $runes 58) 18 (cond (gt $runes 36) 16 15) -}}
-  {{- $title = replaceRE (printf "(.{1,%d})" $lineLength) "${1}\n" $title | strings.TrimSpace -}}
+  {{- $lineLength := cond (gt $runes 58) 24 (cond (gt $runes 36) 22 18) -}}
+  {{- $title = partial "ogp/title-wrap.html" (dict "text" $title "maxLineLength" $lineLength "modelData" $modelData) -}}
 
   {{- $titleOpts := dict
     "x" 86
