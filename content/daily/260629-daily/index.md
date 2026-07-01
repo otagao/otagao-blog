@@ -2,7 +2,7 @@
 title: "日報(26/06/29)"
 date: 2026-06-29
 draft: false
-summary: "日報。春学期の終わり、パソカタ、米を炊く"
+summary: "日報。夏の決心、パソカタ、米を炊く"
 categories: ["日記"]
 tags: ["Vibe Coding", "大学", "食事/自炊"]
 ---
