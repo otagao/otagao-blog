@@ -1,4 +1,4 @@
 [hugoVersion]
   extended = true
-  min = "0.158.0"
-  max = "0.161.1"
+  min = "0.166.0"
+  max = "0.169.0"
