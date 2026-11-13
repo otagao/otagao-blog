@@ -19,7 +19,7 @@
   {{/* Metadata */}}
   {{ $metaDescriptionOrder := .Site.Params.seo.metaDescriptionOrder | default (slice "summary" "description" "site") }}
   {{ $metaDescriptionSources := dict
-    "summary" .Params.Summary
+    "summary" .RawSummary
     "description" .Params.Description
     "site" .Site.Params.description
   }}
